@@ -25,3 +25,12 @@ html, body {
 .page-enter, .page-leave-active {
     opacity: 0;
 }
+
+.md {
+    margin-bottom: 1rem;
+
+}
+
+.mb2 {
+    margin-bottom: 2rem;
+}
