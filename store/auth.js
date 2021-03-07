@@ -2,7 +2,7 @@
 import logout from '~/pages/admin/logout'
 
 export const state = () => ({
-  token: null
+  token: true
 })
 
 export const mutations = {
@@ -27,6 +27,14 @@ export const actions = {
     } catch (e) {
       commit('setError', e, { root: true })
       throw e
+    }
+  },
+  // eslint-disable-next-line require-await
+  async createUser ({ commit }, formData) {
+    try {
+      console.log('createUser', formData)
+    } catch (e) {
+
     }
   },
   setToken ({ commit }, token) {
