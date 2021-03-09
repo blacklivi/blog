@@ -1,24 +1,35 @@
+const posts = [
+  {
+    title: 'Post 1',
+    date: new Date(),
+    views: 22,
+    comments: [1, 2],
+    _id: 'id1'
+  },
+  {
+    title: 'Post 2',
+    date: new Date(),
+    views: 22,
+    comments: [1, 2],
+    _id: 'id2'
+  }
+]
+
 export const actions = {
-  // eslint-disable-next-line no-empty-pattern
-  async fetchAdmin ({}) {
+  async fetchAdmin ({ w }) {
     return await new Promise((resolve) => {
       setTimeout(() => {
-        resolve([
-          {
-            title: 'Post 1',
-            date: new Date(),
-            views: 22,
-            comments: [1, 2],
-            _id: Math.random()
-          },
-          {
-            title: 'Post 2',
-            date: new Date(),
-            views: 22,
-            comments: [1, 2],
-            _id: Math.random()
-          }
-        ])
+        resolve(posts)
+      }, 1000)
+    })
+  },
+  // async update ({}, {id, text}) {
+  //
+  // },
+  async fetchAdminById ({ q }, id) {
+    return await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(posts.find(p => p._id === id))
       }, 1000)
     })
   }
