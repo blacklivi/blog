@@ -26,6 +26,13 @@ export const actions = {
   // async update ({}, {id, text}) {
   //
   // },
+  async create ({ r }, { title, text }) {
+    return await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    })
+  },
   async fetchAdminById ({ q }, id) {
     return await new Promise((resolve) => {
       setTimeout(() => {
