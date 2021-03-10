@@ -1,12 +1,13 @@
 <template>
   <el-form
+    ref="form"
     :model="controls"
     :rules="rules"
-    ref="form"
     @submit.native.prevent="onSubmit"
   >
-
-    <h1 class="mb">Создать новый пост</h1>
+    <h1 class="mb">
+      Создать новый пост
+    </h1>
 
     <el-form-item label="Введите название поста" prop="title">
       <el-input
@@ -16,12 +17,23 @@
 
     <el-form-item label="Текст в формате .md или .html" prop="text">
       <el-input
-        v-model.trim="controls.text"
+        v-model="controls.text"
         type="textarea"
         resize="none"
         :rows="10"
       />
     </el-form-item>
+
+    <el-button class="mb" type="success" plain @click="previewDialog =true">
+      предпросмор
+    </el-button>
+    <el-dialog title="Предросотр" :visible.sync="previewDialog">
+      <div :key="controls.text">
+        <vue-markdown>
+          {{ controls.text }}
+        </vue-markdown>
+      </div>
+    </el-dialog>
 
     <el-form-item>
       <el-button
@@ -33,6 +45,7 @@
         Создать пост
       </el-button>
     </el-form-item>
+    </el-button>
   </el-form>
 </template>
 
@@ -42,6 +55,7 @@ export default {
   middleware: ['admin-auth'],
   data () {
     return {
+      previewDialog: false,
       loading: false,
       controls: {
         text: ''
